@@ -26,52 +26,49 @@ interface ItemsProps {
 }
 
 export default function Items({
-  title = "Everything you need. Nothing you don't.",
-  items = [
-    {
-      title: "Accessibility first",
-      description: "Fully WCAG 2.0 compliant, made with best a11y practices",
-      icon: <ScanFaceIcon className="size-5 stroke-1" />,
-    },
-    {
-      title: "Responsive design",
-      description: "Looks and works great on any device and screen size",
-      icon: <MonitorSmartphoneIcon className="size-5 stroke-1" />,
-    },
-    {
-      title: "Light and dark mode",
-      description:
-        "Seamless switching between color schemes, 6 themes included",
-      icon: <EclipseIcon className="size-5 stroke-1" />,
-    },
-    {
-      title: "Easy to customize",
-      description: "Flexible options to match your product or brand",
-      icon: <BlocksIcon className="size-5 stroke-1" />,
-    },
-    {
-      title: "Top-level performance",
-      description: "Made for lightning-fast load times and smooth interactions",
-      icon: <FastForwardIcon className="size-5 stroke-1" />,
-    },
-    {
-      title: "Production ready",
-      description: "Thoroughly tested and launch-prepared",
-      icon: <RocketIcon className="size-5 stroke-1" />,
-    },
-    {
-      title: "Made for localisation",
-      description:
-        "Easy to implement support for multiple languages and regions",
-      icon: <LanguagesIcon className="size-5 stroke-1" />,
-    },
-    {
-      title: "CMS friendly",
-      description:
-        "Built to work with your any headless content management system",
-      icon: <SquarePenIcon className="size-5 stroke-1" />,
-    },
-  ],
+title = "Professional Trading Infrastructure",
+items = [
+  {
+    title: "Realistic Market Simulation",
+    description: "Advanced order flow simulation with authentic bid/ask dynamics and market depth analysis",
+    icon: <ScanFaceIcon className="size-5 stroke-1" />,
+  },
+  {
+    title: "Multi-Asset Class Support",
+    description: "Comprehensive platform covering major currency pairs, crypto assets, commodities, and indices",
+    icon: <MonitorSmartphoneIcon className="size-5 stroke-1" />,
+  },
+  {
+    title: "Strategy Validation Engine",
+    description: "Test imbalance, absorption, and divergence strategies with historical market scenarios",
+    icon: <EclipseIcon className="size-5 stroke-1" />,
+  },
+  {
+    title: "Risk Management Framework",
+    description: "Integrated position sizing, stop logic, and zone filtering for disciplined execution",
+    icon: <BlocksIcon className="size-5 stroke-1" />,
+  },
+  {
+    title: "Order Flow Analytics",
+    description: "Real-time footprint visualization showing volume distribution and market microstructure",
+    icon: <FastForwardIcon className="size-5 stroke-1" />,
+  },
+  {
+    title: "Performance Assessment System",
+    description: "Comprehensive grading based on statistical performance metrics and consistency",
+    icon: <RocketIcon className="size-5 stroke-1" />,
+  },
+  {
+    title: "Session Analytics & Reporting",
+    description: "Complete trade history tracking with performance reporting and data export",
+    icon: <LanguagesIcon className="size-5 stroke-1" />,
+  },
+  {
+    title: "Custom Strategy Configuration",
+    description: "Flexible parameter tuning for triggers, sensitivity, and execution logic",
+    icon: <SquarePenIcon className="size-5 stroke-1" />,
+  },
+],
   className,
 }: ItemsProps) {
   return (

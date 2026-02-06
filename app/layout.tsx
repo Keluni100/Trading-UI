@@ -25,8 +25,8 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: "Mikolaj Dobrucki",
-      url: "https://mikolajdobrucki.com",
+      name: "Mikolaj Dobrucki & Keluni Paz",
+      
     },
   ],
   creator: "mikolajdobrucki",

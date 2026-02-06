@@ -86,7 +86,7 @@ export function PricingColumn({
             <div className="flex h-6 items-baseline gap-1">
               <span className="text-muted-foreground text-lg font-medium line-through">
                 {originalPrice > 0 && price !== originalPrice
-                  ? `$${originalPrice}`
+                  ? `£{originalPrice}`
                   : ""}
               </span>
             </div>
@@ -95,7 +95,7 @@ export function PricingColumn({
             <div className="flex flex-col gap-1">
               <div className="flex items-baseline gap-1">
                 <span className="text-muted-foreground text-2xl font-bold">
-                  $
+                  £
                 </span>
                 <span className="text-6xl font-bold">{price}</span>
               </div>
@@ -103,9 +103,9 @@ export function PricingColumn({
             <div className="flex min-h-[40px] flex-col">
               {price > 0 && (
                 <>
-                  <span className="text-sm">one-time payment</span>
+                  <span className="text-sm">Subscription</span>
                   <span className="text-muted-foreground text-sm">
-                    plus local taxes
+                    Monthly Subscription
                   </span>
                 </>
               )}

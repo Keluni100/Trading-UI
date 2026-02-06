@@ -31,9 +31,9 @@ interface HeroProps {
 }
 
 export default function Hero({
-  title = "Give your big idea the design it deserves",
-  description = "Professionally designed blocks and templates built with React, Shadcn/ui and Tailwind that will help your product stand out.",
-  mockup = (
+  title = "Give Your Trading Strategy The Simulator It Needs",
+description = "A professional trading simulator with realistic market conditions, proper risk controls, and intuitive visualisation to properly test your strategies before risking capital.",
+mockup = (
     <Screenshot
       srcLight="/dashboard-light.png"
       srcDark="/dashboard-dark.png"
@@ -46,7 +46,7 @@ export default function Hero({
   badge = (
     <Badge variant="outline" className="animate-appear">
       <span className="text-muted-foreground">
-        New version of Launch UI is out!
+        New Trading Simulator Is Out Now
       </span>
       <a href={siteConfig.getStartedUrl} className="flex items-center gap-1">
         Get started

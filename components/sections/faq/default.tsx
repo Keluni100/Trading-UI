@@ -24,121 +24,90 @@ interface FAQProps {
 }
 
 export default function FAQ({
-  title = "Questions and Answers",
+  title = "Frequently Asked Questions",
   items = [
     {
-      question:
-        "Why building a great landing page is critical for your business?",
+      question: "What exactly is this trading simulator?",
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            In today&apos;s AI-driven world, standing out is harder than ever.
-            While anyone can build a product, a professional landing page makes
-            the difference between success and failure.
+            Our trading simulator is a professional-grade platform that replicates real market conditions using historical data, allowing you to test strategies, practice order flow analysis, and develop your trading skills without financial risk.
           </p>
           <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            Launch UI helps you ship faster without compromising on quality.
+            It's designed for both novice traders looking to learn and experienced traders wanting to validate new strategies before deploying capital.
           </p>
         </>
       ),
     },
     {
-      question: "Why use Launch UI instead of a no-code tool?",
+      question: "Is this using real market data?",
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[600px]">
-            No-code tools lock you into their ecosystem with recurring fees and
-            limited control. They often come with performance issues and make it
-            difficult to integrate with your product.
+            The simulator generates realistic synthetic market data based on statistical models that replicate actual market behaviour, including spreads, volatility, volume patterns, and order flow dynamics across different market conditions.
           </p>
           <p className="text-muted-foreground mb-4 max-w-[600px]">
-            You can&apos;t even change your hosting provider and basic things
-            like web analytics come as extra costs and paid add-ons.
-          </p>
-          <p className="text-muted-foreground mb-4 max-w-[600px]">
-            What might seem like a convenient solution today could paint you
-            into a corner tomorrow, limiting your ability to scale and adapt.
-            Launch UI gives you full control of your code while maintaining
-            professional quality.
+            This approach ensures you get authentic trading experience while avoiding the regulatory complexities of distributing real market data.
           </p>
         </>
       ),
     },
     {
-      question:
-        "How Launch UI is different from other components libraries and templates?",
+      question: "Can I test multiple trading strategies?",
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
-            Launch UI stands out with premium design quality and delightful
-            touches of custom animations and illustrations.
+            Yes, the platform supports multiple strategy types including order flow analysis, imbalance trading, volume profile strategies, and custom configurations with adjustable parameters for sensitivity, risk management, and execution logic.
           </p>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
-            All components are carefully crafted to help position your product
-            as a professional tool, avoiding the generic template look.
-          </p>
-          <p className="text-muted-foreground mb-4 max-w-[640px] text-balance">
-            Unlike many libraries that rely on outdated CSS practices and old
-            dependencies, Launch UI is built with modern technologies and best
-            practices in mind.
+            Each strategy session is tracked separately with comprehensive performance metrics and grading to help you identify what works best for your trading style.
           </p>
         </>
       ),
     },
     {
-      question: 'Why exactly does it mean that "The code is yours"?',
+      question: "Is there educational content or is this just a simulator?",
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
-            The basic version of Launch UI is open-source and free forever,
-            under a do-whatever-you-want license.
+            While primarily a hands-on simulator, the platform includes contextual learning through practical application. You learn by doing—executing trades, analysing order flow patterns, and seeing immediate feedback on your decisions.
           </p>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
-            The pro version that contains more components and options is a
-            one-time purchase that gives you lifetime access to all current and
-            future content. Use it for unlimited personal and commercial
-            projects - no recurring fees or restrictions.
-          </p>
-          <p className="text-muted-foreground mb-4 max-w-[580px]">
-            For complete details about licensing and usage rights, check out{" "}
-            <Link href="/pricing" className="text-foreground underline">
-              the pricing page
-            </Link>
-            .
+            This experiential learning approach helps develop practical skills faster than theoretical study alone.
           </p>
         </>
       ),
     },
     {
-      question: "Are Figma files included?",
+      question: "How does the performance grading work?",
+      answer: (
+        <>
+          <p className="text-muted-foreground mb-4 max-w-[580px]">
+            The simulator evaluates your trading performance across multiple metrics including win rate, risk-adjusted returns, consistency, and trade management. After a minimum of 10 trades, you receive an A-F grade that helps benchmark your progress.
+          </p>
+          <p className="text-muted-foreground mb-4 max-w-[580px]">
+            This objective feedback system helps identify strengths and areas for improvement in your trading approach.
+          </p>
+        </>
+      ),
+    },
+    {
+      question: "What happens to my trading session data?",
       answer: (
         <p className="text-muted-foreground mb-4 max-w-[580px]">
-          Yes! The complete Launch UI template is available for free on the{" "}
-          <Link
-            href="https://www.figma.com/community/file/1420131743903900629/launch-ui-landing-page-components-ui-kit"
-            className="text-foreground underline"
-          >
-            Figma community
-          </Link>
-          .
+          All your trading sessions, strategies, and performance data are stored locally in your browser. We don't collect or store your trading activity on our servers. You can export your session history at any time for your own records or analysis.
         </p>
       ),
     },
     {
-      question: "Can I get a discount?",
+      question: "Is this suitable for complete beginners?",
       answer: (
         <>
           <p className="text-muted-foreground mb-4 max-w-[580px]">
-            Actually, yes! I&apos;m always acively looking for beta testers of
-            new features. If you are interested in exchanging feedback for a
-            discount, please contact me via{" "}
-            <a
-              href={siteConfig.links.email}
-              className="underline underline-offset-2"
-            >
-              email
-            </a>
-            .
+            Absolutely. The simulator starts with basic concepts and allows you to progress at your own pace. The visual order flow display makes market dynamics intuitive, and you can begin with simple market orders before exploring more advanced order types and strategies.
+          </p>
+          <p className="text-muted-foreground mb-4 max-w-[580px]">
+            Many users find they learn more quickly by experiencing market movements and their own trading decisions in real-time, without financial pressure.
           </p>
         </>
       ),
