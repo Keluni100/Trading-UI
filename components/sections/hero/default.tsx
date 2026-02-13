@@ -32,14 +32,14 @@ interface HeroProps {
 
 export default function Hero({
   title = "Give Your Trading Strategy The Simulator It Needs",
-description = "A professional trading simulator with realistic market conditions, proper risk controls, and intuitive visualisation to properly test your strategies before risking capital.",
+description = "Bridge the gap between theory and execution with a professional-grade trading simulator engineered for precision. Experience a hyper-realistic environment that replicates live market conditions—including authentic spreads, volatility spikes, and order flow dynamics—allowing you to stress-test complex strategies under pressure,Designed by traders for traders, our platform integrates institutional-level risk controls and intuitive data visualization. Whether you’re refining volume profile strategies or practicing high-frequency order flow analysis, you can develop the psychological discipline and technical mastery required for the live markets—all within a zero-risk, high-fidelity sandbox",
 mockup = (
     <Screenshot
       srcLight="/dashboard-light.png"
       srcDark="/dashboard-dark.png"
       alt="Launch UI app screenshot"
-      width={1248}
-      height={765}
+      width={900}
+      height={400}
       className="w-full"
     />
   ),
@@ -79,12 +79,12 @@ mockup = (
       <div className="max-w-container mx-auto flex flex-col gap-12 pt-16 sm:gap-24">
         <div className="flex flex-col items-center gap-6 text-center sm:gap-12">
           {badge !== false && badge}
-          <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-4xl leading-tight font-semibold text-balance text-transparent drop-shadow-2xl sm:text-6xl sm:leading-tight md:text-8xl md:leading-tight">
-            {title}
-          </h1>
-          <p className="text-md animate-appear text-muted-foreground relative z-10 max-w-[740px] font-medium text-balance opacity-0 delay-100 sm:text-xl">
-            {description}
-          </p>
+         <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-3xl leading-tight font-bold tracking-tight text-balance text-transparent drop-shadow-2xl sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight">
+  {title}
+</h1>
+          <p className="text-sm animate-appear text-muted-foreground relative z-10 mx-auto max-w-[600px] font-medium text-balance opacity-0 delay-100 sm:text-base md:max-w-[650px]">
+  {description}
+</p>
           {buttons !== false && buttons.length > 0 && (
             <div className="animate-appear relative z-10 flex justify-center gap-4 opacity-0 delay-300">
               {buttons.map((button, index) => (

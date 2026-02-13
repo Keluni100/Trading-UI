@@ -45,15 +45,14 @@ export default function Navbar({
   name = "Trading UI",
   homeUrl = siteConfig.url,
   mobileLinks = [
-    { text: "Getting Started", href: siteConfig.url },
-    { text: "Components", href: siteConfig.url },
-    { text: "Documentation", href: siteConfig.url },
+    { text: "Getting Started", href: "/pricing" },
+   
   ],
   actions = [
     { text: "Sign in", href: siteConfig.url, isButton: false },
     {
       text: "Get Started",
-      href: siteConfig.url,
+      href: "/pricing",
       isButton: true,
       variant: "default",
     },

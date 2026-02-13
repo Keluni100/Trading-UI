@@ -39,16 +39,17 @@ export default function FooterSection({
     {
       title: "Product",
       links: [
+        { text: "Pricing", href: "/pricing" },
         { text: "Changelog", href: siteConfig.url },
         { text: "Documentation", href: siteConfig.url },
       ],
     },
     {
-      title: "Company",
+      title: "Legal",
       links: [
-        { text: "About", href: siteConfig.url },
-        { text: "Careers", href: siteConfig.url },
-        { text: "Blog", href: siteConfig.url },
+        { text: "Terms of Service", href: "/terms" },
+    { text: "Privacy Policy", href: "/privacy" },
+    { text: "Refund Policy", href: "/refund" },
       ],
     },
     {
@@ -60,10 +61,10 @@ export default function FooterSection({
       ],
     },
   ],
-  copyright = "© 2025 Mikołaj Dobrucki. All rights reserved",
+  copyright = "© 2025 Keluni Paz Ernestio. All rights reserved",
   policies = [
-    { text: "Privacy Policy", href: siteConfig.url },
-    { text: "Terms of Service", href: siteConfig.url },
+    { text: "Privacy Policy", href: "/privacy" },
+    { text: "Terms of Service", href: "/terms" },
   ],
   showModeToggle = true,
   className,
