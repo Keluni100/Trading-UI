@@ -9,40 +9,30 @@ export const PADDLE_PRICES = {
   pro_annual:  "pri_01kk6wq3xef4z2t77e144xs5s9"
 };
 
-
-// We use this local variable because window.Paddle.Initialized is read-only
 let isPaddleLoaded = false;
 
 export function initPaddle() {
   if (typeof window === "undefined") return;
 
-  // 1. If script isn't ready yet, wait and retry
   if (!window.Paddle) {
-    console.warn("[Paddle] window.Paddle not found. Retrying in 500ms...");
+    console.warn("[Paddle] Script not found, retrying...");
     setTimeout(initPaddle, 500);
     return;
   }
 
-  // 2. Use our local flag to prevent double-initialization
-  if (isPaddleLoaded) {
-    console.log("[Paddle] Already initialized locally, skipping.");
-    return;
-  }
+  if (isPaddleLoaded) return;
 
   try {
-    console.log("[Paddle] Setting environment to sandbox...");
     window.Paddle.Environment.set("sandbox");
-
     window.Paddle.Initialize({
       token: PADDLE_CLIENT_TOKEN,
       eventCallback(event) {
-        console.log("[Paddle] Event:", event.name, event);
+        console.log("[Paddle Event]:", event.name, event);
         if (event.name === "checkout.completed") {
           window.location.href = "/dashboard";
         }
       },
     });
-
     isPaddleLoaded = true;
     console.log("[Paddle] Initialized successfully ✓");
   } catch (e) {
@@ -51,12 +41,21 @@ export function initPaddle() {
 }
 
 export function initPaddleCheckout(priceId) {
+  console.log("------------------------------------");
+  console.log("🚀 CHECKOUT ATTEMPT");
+  console.log("👉 Price ID received:", priceId);
+  console.log("👉 Data Type:", typeof priceId);
+  console.log("------------------------------------");
+
   if (typeof window === "undefined" || !window.Paddle) {
-    console.error("[Paddle] Cannot open checkout: Paddle not ready.");
+    console.error("❌ Paddle not ready");
     return;
   }
 
-  console.log("[Paddle] Opening checkout with priceId:", priceId);
+  if (!priceId || typeof priceId !== 'string') {
+    console.error("❌ INVALID PRICE ID: Checkout aborted to prevent 400 error.");
+    return;
+  }
 
   window.Paddle.Checkout.open({
     items: [{ priceId: priceId, quantity: 1 }],
@@ -66,6 +65,3 @@ export function initPaddleCheckout(priceId) {
     },
   });
 }
-
-export async function checkSubscription() { return { hasSubscription: false }; }
-export async function getSubscriptionUrls() { return null; }
