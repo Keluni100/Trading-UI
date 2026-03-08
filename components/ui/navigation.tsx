@@ -7,7 +7,6 @@ import { ReactNode } from "react";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../logos/launch-ui";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -46,78 +45,60 @@ interface NavigationProps {
 }
 
 export default function Navigation({
+  // 1. Simplified top-level menu
   menuItems = [
     {
-      title: "Getting started",
+      title: "Platform",
       content: "default",
     },
     {
-      title: "Components",
-      content: "components",
+      title: "Pricing",
+      isLink: true,
+      href: "/pricing",
     },
     {
-      title: "Documentation",
-      isLink: true,
-      href: siteConfig.url,
+      title: "Legal",
+      content: "components", // Reusing the dropdown for Legal links
     },
   ],
+  // 2. Legal Dropdown (Replaced Shadcn components with your actual pages)
   components = [
     {
-      title: "Alert Dialog",
-      href: "/docs/primitives/alert-dialog",
-      description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
+      title: "Terms of Service",
+      href: "/terms",
+      description: "Our Merchant of Record (Paddle) agreement and usage terms.",
     },
     {
-      title: "Hover Card",
-      href: "/docs/primitives/hover-card",
-      description:
-        "For sighted users to preview content available behind a link.",
+      title: "Refund Policy",
+      href: "/refund",
+      description: "Details on our 14-day guarantee and cancellation policy.",
     },
     {
-      title: "Progress",
-      href: "/docs/primitives/progress",
-      description:
-        "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    },
-    {
-      title: "Scroll-area",
-      href: "/docs/primitives/scroll-area",
-      description: "Visually or semantically separates content.",
-    },
-    {
-      title: "Tabs",
-      href: "/docs/primitives/tabs",
-      description:
-        "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    },
-    {
-      title: "Tooltip",
-      href: "/docs/primitives/tooltip",
-      description:
-        "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      title: "Privacy Policy",
+      href: "/privacy",
+      description: "How we and Paddle handle and protect your data.",
     },
   ],
-  logo = <LaunchUI />,
-  logoTitle = "Launch UI",
-  logoDescription = "Landing page template built with React, Shadcn/ui and Tailwind that you can copy/paste into your project.",
-  logoHref = siteConfig.url,
+  logo = <div className="size-6 bg-primary rounded-full" />, // Replace with your actual logo
+  logoTitle = "Trading Simulator",
+  logoDescription = "Professional-grade market simulation and order flow visualization.",
+  logoHref = "/",
+  // 3. Platform Dropdown (Links to sections on your home page)
   introItems = [
     {
-      title: "Introduction",
-      href: siteConfig.url,
-      description:
-        "Re-usable components built using Radix UI and Tailwind CSS.",
+      title: "Features",
+      href: "/#features",
+      description: "Explore our realistic order flow and market data tools.",
     },
     {
-      title: "Installation",
-      href: siteConfig.url,
-      description: "How to install dependencies and structure your app.",
+      title: "Analysis",
+      href: "/#analysis",
+      description: "Professional-grade metrics to track your trading growth.",
     },
     {
-      title: "Typography",
-      href: siteConfig.url,
-      description: "Styles for headings, paragraphs, lists...etc",
+      title: "FAQ",
+      href: "/#faq",
+      description: "Common questions about the simulator and billing.",
     },
   ],
 }: NavigationProps) {
@@ -141,7 +122,7 @@ export default function Navigation({
                     <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
-                          <a
+                          <Link
                             className="from-muted/30 to-muted/10 flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
                             href={logoHref}
                           >
@@ -152,7 +133,7 @@ export default function Navigation({
                             <p className="text-muted-foreground text-sm leading-tight">
                               {logoDescription}
                             </p>
-                          </a>
+                          </Link>
                         </NavigationMenuLink>
                       </li>
                       {introItems.map((intro, i) => (
@@ -162,7 +143,7 @@ export default function Navigation({
                       ))}
                     </ul>
                   ) : item.content === "components" ? (
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[400px]">
                       {components.map((component) => (
                         <ListItem
                           key={component.title}
@@ -190,13 +171,15 @@ function ListItem({
   className,
   title,
   children,
+  href,
   ...props
 }: React.ComponentProps<"a"> & { title: string }) {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
-          data-slot="list-item"
+        {/* Using Link instead of <a> for better Next.js performance */}
+        <Link
+          href={href || "#"}
           className={cn(
             "hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground block space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors select-none",
             className,
@@ -207,7 +190,7 @@ function ListItem({
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   );

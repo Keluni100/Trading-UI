@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
-
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-
 import LaunchUI from "../../logos/launch-ui";
 import {
   Footer,
@@ -34,34 +32,24 @@ interface FooterProps {
 
 export default function FooterSection({
   logo = <LaunchUI />,
-  name = "Trading UI",
+  name = "Deep Data Trading",
   columns = [
     {
       title: "Product",
       links: [
+        { text: "Questions", href: "/faq" },
         { text: "Pricing", href: "/pricing" },
-        { text: "Changelog", href: siteConfig.url },
-        { text: "Documentation", href: siteConfig.url },
       ],
     },
     {
       title: "Legal",
       links: [
         { text: "Terms of Service", href: "/terms" },
-    { text: "Privacy Policy", href: "/privacy" },
-    { text: "Refund Policy", href: "/refund" },
-      ],
-    },
-    {
-      title: "Contact",
-      links: [
-        { text: "Discord", href: siteConfig.url },
-        { text: "Twitter", href: siteConfig.url },
-        { text: "Github", href: siteConfig.links.github },
+        { text: "Privacy Policy", href: "/privacy" },
+        { text: "Refund Policy", href: "/refund" },
       ],
     },
   ],
-  copyright = "© 2025 Keluni Paz Ernestio. All rights reserved",
   policies = [
     { text: "Privacy Policy", href: "/privacy" },
     { text: "Terms of Service", href: "/terms" },
@@ -95,11 +83,17 @@ export default function FooterSection({
               </FooterColumn>
             ))}
           </FooterContent>
-          <FooterBottom>
-            <div>{copyright}</div>
+          <FooterBottom className="flex-col md:flex-row items-start md:items-center gap-6">
+            <div className="flex flex-col gap-2">
+              <div>© 2026 Deep Data Trading. All rights reserved.</div>
+              <p className="text-xs text-muted-foreground max-w-lg">
+                Payments are processed securely by <strong>Paddle</strong>, our Merchant of Record. 
+                Deep Data Trading provides market simulation software and does not offer financial brokerage or investment advisory services.
+              </p>
+            </div>
             <div className="flex items-center gap-4">
               {policies.map((policy, index) => (
-                <a key={index} href={policy.href}>
+                <a key={index} href={policy.href} className="hover:text-primary transition-colors">
                   {policy.text}
                 </a>
               ))}

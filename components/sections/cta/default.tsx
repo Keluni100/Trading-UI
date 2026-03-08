@@ -1,5 +1,6 @@
 import { type VariantProps } from "class-variance-authority";
 import { ReactNode } from "react";
+import Link from "next/link"; // Changed to Next.js Link for faster transitions
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -23,12 +24,19 @@ interface CTAProps {
 }
 
 export default function CTA({
-  title = "Start building",
+  // 1. Professional Trading Title
+  title = "Ready to Master the Markets?",
+  // 2. Pointing directly to your real pricing page
   buttons = [
     {
-      href: siteConfig.getStartedUrl,
-      text: "Get Started",
+      href: "/pricing", 
+      text: "View Plans & Pricing",
       variant: "default",
+    },
+    {
+      href: "/terms", 
+      text: "Learn More",
+      variant: "outline",
     },
   ],
   className,
@@ -39,8 +47,11 @@ export default function CTA({
         <h2 className="max-w-[640px] text-3xl leading-tight font-semibold sm:text-5xl sm:leading-tight">
           {title}
         </h2>
+        <p className="text-muted-foreground max-w-[500px] text-lg -mt-4">
+          Join professional traders using our simulator to refine their edge without risking capital.
+        </p>
         {buttons !== false && buttons.length > 0 && (
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             {buttons.map((button, index) => (
               <Button
                 key={index}
@@ -48,11 +59,12 @@ export default function CTA({
                 size="lg"
                 asChild
               >
-                <a href={button.href}>
+                {/* 3. Changed <a> to <Link> for internal routing */}
+                <Link href={button.href}>
                   {button.icon}
                   {button.text}
                   {button.iconRight}
-                </a>
+                </Link>
               </Button>
             ))}
           </div>

@@ -1,51 +1,19 @@
+"use client";
+
 import * as React from "react";
 
-import { cn } from "@/lib/utils";
+export const Footer = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <footer className={`border-t bg-background ${className}`}>{children}</footer>
+);
 
-function Footer({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="footer"
-      className={cn("bg-background text-foreground pt-12 pb-4", className)}
-      {...props}
-    />
-  );
-}
+export const FooterContent = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={`container mx-auto px-4 py-12 ${className}`}>{children}</div>
+);
 
-function FooterContent({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="footer-content"
-      className={cn(
-        "grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
+export const FooterColumn = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={`flex flex-col gap-4 ${className}`}>{children}</div>
+);
 
-function FooterColumn({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="footer-column"
-      className={cn("flex flex-col gap-4", className)}
-      {...props}
-    />
-  );
-}
-
-function FooterBottom({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="footer-bottom"
-      className={cn(
-        "border-border dark:border-border/15 text-muted-foreground mt-8 flex flex-col items-center justify-between gap-4 border-t pt-4 text-xs sm:flex-row",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
-
-export { Footer, FooterBottom, FooterColumn, FooterContent };
+export const FooterBottom = ({ children, className }: { children: React.ReactNode; className?: string }) => (
+  <div className={`mt-12 pt-8 border-t ${className}`}>{children}</div>
+);

@@ -1,11 +1,11 @@
 import { type VariantProps } from "class-variance-authority";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRightIcon, PlayCircle } from "lucide-react";
 import { ReactNode } from "react";
+import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import Github from "../../logos/github";
 import { Badge } from "../../ui/badge";
 import { Button, buttonVariants } from "../../ui/button";
 import Glow from "../../ui/glow";
@@ -32,12 +32,12 @@ interface HeroProps {
 
 export default function Hero({
   title = "Give Your Trading Strategy The Simulator It Needs",
-description = "Bridge the gap between theory and execution with a professional-grade trading simulator engineered for precision. Experience a hyper-realistic environment that replicates live market conditions—including authentic spreads, volatility spikes, and order flow dynamics—allowing you to stress-test complex strategies under pressure,Designed by traders for traders, our platform integrates institutional-level risk controls and intuitive data visualization. Whether you’re refining volume profile strategies or practicing high-frequency order flow analysis, you can develop the psychological discipline and technical mastery required for the live markets—all within a zero-risk, high-fidelity sandbox",
-mockup = (
+  description = "Bridge the gap between theory and execution with a professional-grade trading simulator engineered for precision. Experience a hyper-realistic environment that replicates live market conditions—including authentic spreads, volatility spikes, and order flow dynamics.",
+  mockup = (
     <Screenshot
-      srcLight="/dashboard-light.png"
+      srcLight="/dashboard-light.png" // Ensure these images exist in your /public folder!
       srcDark="/dashboard-dark.png"
-      alt="Launch UI app screenshot"
+      alt="Trading Simulator Dashboard"
       width={900}
       height={400}
       className="w-full"
@@ -46,25 +46,26 @@ mockup = (
   badge = (
     <Badge variant="outline" className="animate-appear">
       <span className="text-muted-foreground">
-        New Trading Simulator Is Out Now
+        Professional Simulation Platform
       </span>
-      <a href={siteConfig.getStartedUrl} className="flex items-center gap-1">
-        Get started
+      <Link href="/pricing" className="flex items-center gap-1 ml-2">
+        View Plans
         <ArrowRightIcon className="size-3" />
-      </a>
+      </Link>
     </Badge>
   ),
   buttons = [
     {
-      href: siteConfig.getStartedUrl,
-      text: "Get Started",
+      href: "/pricing",
+      text: "Start Simulating",
       variant: "default",
+      iconRight: <ArrowRightIcon className="ml-2 size-4" />,
     },
     {
-      href: siteConfig.links.github,
-      text: "Github",
-      variant: "glow",
-      icon: <Github className="mr-2 size-4" />,
+      href: "#features",
+      text: "See Features",
+      variant: "outline",
+      icon: <PlayCircle className="mr-2 size-4" />,
     },
   ],
   className,
@@ -79,12 +80,12 @@ mockup = (
       <div className="max-w-container mx-auto flex flex-col gap-12 pt-16 sm:gap-24">
         <div className="flex flex-col items-center gap-6 text-center sm:gap-12">
           {badge !== false && badge}
-         <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-3xl leading-tight font-bold tracking-tight text-balance text-transparent drop-shadow-2xl sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight">
-  {title}
-</h1>
+          <h1 className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-3xl leading-tight font-bold tracking-tight text-balance text-transparent drop-shadow-2xl sm:text-5xl sm:leading-tight md:text-6xl md:leading-tight">
+            {title}
+          </h1>
           <p className="text-sm animate-appear text-muted-foreground relative z-10 mx-auto max-w-[600px] font-medium text-balance opacity-0 delay-100 sm:text-base md:max-w-[650px]">
-  {description}
-</p>
+            {description}
+          </p>
           {buttons !== false && buttons.length > 0 && (
             <div className="animate-appear relative z-10 flex justify-center gap-4 opacity-0 delay-300">
               {buttons.map((button, index) => (
@@ -94,11 +95,11 @@ mockup = (
                   size="lg"
                   asChild
                 >
-                  <a href={button.href}>
+                  <Link href={button.href}>
                     {button.icon}
                     {button.text}
                     {button.iconRight}
-                  </a>
+                  </Link>
                 </Button>
               ))}
             </div>

@@ -1,57 +1,37 @@
 import "@/app/globals.css";
-
+import PaddleScript from "@/components/paddle-script";
 import type { Metadata } from "next";
-
+import Script from "next/script";
 import { ThemeProvider } from "@/components/contexts/theme-provider";
 import { inter } from "@/lib/fonts";
-
 import { siteConfig } from "../config/site";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: "Deep Data Trading - Professional Market Simulation",
+    template: `%s - Deep Data Trading`,
   },
-  metadataBase: new URL(siteConfig.getStartedUrl),
-  description: siteConfig.description,
+  metadataBase: new URL(siteConfig.url || "https://deepdatatrading.com"),
+  description: "High-fidelity market simulation and order flow visualization for serious traders.",
   keywords: [
-    "Landing page template",
-    "Components",
-    "Shadcn",
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Radix UI",
+    "Market Simulator", "Trading Strategy Testing", "Order Flow Visualization",
+    "Deep Data Trading", "Trading Sandbox",
   ],
-  authors: [
-    {
-      name: "Mikolaj Dobrucki & Keluni Paz",
-      
-    },
-  ],
-  creator: "mikolajdobrucki",
+  authors: [{ name: "Deep Data Trading Team" }],
+  creator: "Deep Data Trading",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: siteConfig.getStartedUrl,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
+    url: siteConfig.url,
+    title: "Deep Data Trading",
+    description: "Master the markets with our professional-grade simulation infrastructure.",
+    siteName: "Deep Data Trading",
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
+    title: "Deep Data Trading",
+    description: "Professional market simulation for strategy mastery.",
     images: [siteConfig.ogImage],
-    creator: "@mikolajdobrucki",
   },
   icons: {
     icon: "/favicon.svg",
@@ -59,15 +39,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// Separate client component just for the Paddle script
+// This keeps the layout Server Component (preserving metadata export)
+
+
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" style={{ colorScheme: "dark" }} className="dark">
       <body className={`${inter.className} bg-background antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
+        <PaddleScript />
       </body>
     </html>
   );

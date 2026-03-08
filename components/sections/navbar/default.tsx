@@ -1,11 +1,13 @@
+"use client";
+
 import { type VariantProps } from "class-variance-authority";
 import { Menu } from "lucide-react";
 import { ReactNode } from "react";
+import Link from "next/link"; // Use Next.js Link
 
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import LaunchUI from "../../logos/launch-ui";
 import { Button, buttonVariants } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
@@ -41,15 +43,17 @@ interface NavbarProps {
 }
 
 export default function Navbar({
-  logo = <LaunchUI />,
+  logo = <div className="size-6 bg-primary rounded-full" />, // Simple placeholder logo
   name = "Trading UI",
-  homeUrl = siteConfig.url,
+  homeUrl = "/",
+  // 1. Updated Mobile Links to match your actual pages
   mobileLinks = [
-    { text: "Getting Started", href: "/pricing" },
-   
+    { text: "Features", href: "/#features" },
+    { text: "Pricing", href: "/pricing" },
+    { text: "Terms", href: "/terms" },
   ],
+  // 2. REMOVED the "Sign In" action to avoid Shadcn redirection errors
   actions = [
-    { text: "Sign in", href: siteConfig.url, isButton: false },
     {
       text: "Get Started",
       href: "/pricing",
@@ -67,13 +71,13 @@ export default function Navbar({
       <div className="max-w-container relative mx-auto">
         <NavbarComponent>
           <NavbarLeft>
-            <a
+            <Link
               href={homeUrl}
               className="flex items-center gap-2 text-xl font-bold"
             >
               {logo}
               {name}
-            </a>
+            </Link>
             {showNavigation && (customNavigation || <Navigation />)}
           </NavbarLeft>
           <NavbarRight>
@@ -84,20 +88,20 @@ export default function Navbar({
                   variant={action.variant || "default"}
                   asChild
                 >
-                  <a href={action.href}>
+                  <Link href={action.href}>
                     {action.icon}
                     {action.text}
                     {action.iconRight}
-                  </a>
+                  </Link>
                 </Button>
               ) : (
-                <a
+                <Link
                   key={index}
                   href={action.href}
-                  className="hidden text-sm md:block"
+                  className="hidden text-sm md:block hover:text-primary transition-colors"
                 >
                   {action.text}
-                </a>
+                </Link>
               ),
             )}
             <Sheet>
@@ -112,22 +116,26 @@ export default function Navbar({
                 </Button>
               </SheetTrigger>
               <SheetContent side="right">
-                <nav className="grid gap-6 text-lg font-medium">
-                  <a
+                <nav className="grid gap-6 text-lg font-medium mt-8">
+                  <Link
                     href={homeUrl}
-                    className="flex items-center gap-2 text-xl font-bold"
+                    className="flex items-center gap-2 text-xl font-bold mb-4"
                   >
                     <span>{name}</span>
-                  </a>
+                  </Link>
                   {mobileLinks.map((link, index) => (
-                    <a
+                    <Link
                       key={index}
                       href={link.href}
-                      className="text-muted-foreground hover:text-foreground"
+                      className="text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {link.text}
-                    </a>
+                    </Link>
                   ))}
+                  {/* Mobile Call to Action */}
+                  <Button asChild className="mt-4">
+                    <Link href="/pricing">Get Started</Link>
+                  </Button>
                 </nav>
               </SheetContent>
             </Sheet>
